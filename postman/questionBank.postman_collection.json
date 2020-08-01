@@ -1,0 +1,1340 @@
+{
+	"info": {
+		"_postman_id": "64fa2755-652e-4ee9-bf5b-ed8175d2ebd1",
+		"name": "questionBank",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "public",
+			"item": [
+				{
+					"name": "captcha",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/public/captcha",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"public",
+								"captcha"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "1019933576@qq.com",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "745663",
+									"disabled": true
+								},
+								{
+									"key": "verification",
+									"value": "8dbg"
+								},
+								{
+									"key": "email",
+									"value": "test@test",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "123",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/public/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"public",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "exam1ple@em1ail.com"
+								},
+								{
+									"key": "password",
+									"value": "123"
+								},
+								{
+									"key": "username",
+									"value": "ga1oli1haiUnm",
+									"type": "text"
+								},
+								{
+									"key": "avatar",
+									"value": "\\upload_a65ce214e60adbe045fa5e3cc4c737bf.jpg",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "verification",
+									"value": "viyz",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "admin",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/public/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"public",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/public/search/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"public",
+								"search",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getQuestions",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/public/questions?page=1&count=10&sort=2&key=t",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"public",
+								"questions"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "count",
+									"value": "10"
+								},
+								{
+									"key": "sort",
+									"value": "2"
+								},
+								{
+									"key": "key",
+									"value": "t"
+								},
+								{
+									"key": "categories",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "diificulties",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAnswers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost/public/answers?page=1&count=7&sort=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"public",
+								"answers"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "count",
+									"value": "7"
+								},
+								{
+									"key": "sort",
+									"value": "3"
+								},
+								{
+									"key": "questionId",
+									"value": "5ea9a88e0e015a2fb8927b76",
+									"disabled": true
+								},
+								{
+									"key": "userId",
+									"value": "5ea6ec1ef8ce9663281616e6",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "student",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAnswerById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/public/answers/5eae200cd817ac3e4054459c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"public",
+								"answers",
+								"5eae200cd817ac3e4054459c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getQuestionById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/public/questions/5ea9a88e0e015a2fb8927b76",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"public",
+								"questions",
+								"5ea9a88e0e015a2fb8927b76"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getComments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/public/comments?answerId=5eaa83c59f6add2ec0779d80&page=1&count=20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"public",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "answerId",
+									"value": "5eaa83c59f6add2ec0779d80"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "count",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCommentById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/public/comments/5ea56fdecb1be62c6005bad8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"public",
+								"comments",
+								"5ea56fdecb1be62c6005bad8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getDifficulties",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/public/difficulties",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"public",
+								"difficulties"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getDifficultyById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/public/difficulties/5ea55566f65e0a3d58b1f17c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"public",
+								"difficulties",
+								"5ea55566f65e0a3d58b1f17c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCategories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/public/categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"public",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCategoryById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/public/categories/5ea5525566c2651918648935",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"public",
+								"categories",
+								"5ea5525566c2651918648935"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUsersJsonp",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/public/usersJsonp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"public",
+								"usersJsonp"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "userAction",
+			"item": [
+				{
+					"name": "upload",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "*",
+									"type": "file",
+									"src": "/C:/Users/10199/Pictures/Camera Roll/WIN_20200414_16_49_11_Pro.jpg"
+								},
+								{
+									"key": "a",
+									"type": "file",
+									"src": "/C:/Users/10199/Desktop/workspace/web/demo/fullpage/images/landscape7.webp",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/userAction/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"userAction",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postAnswers",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"123\",\n\t\"content\":\"123\",\n\t\"md\":\"123\",\n\t\"image\":[\"/uploads/upload_816188c20af1804410dd39befdf77d4c.jpg\",\"/uploads/upload_daafedb91d975e6bfc573292f817e48c.jpg\"]\n}"
+						},
+						"url": {
+							"raw": "http://localhost/userAction/answers/5ea9a88e0e015a2fb8927b76",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"userAction",
+								"answers",
+								"5ea9a88e0e015a2fb8927b76"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/userAction/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"userAction",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "likesQuestions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/userAction/likes/questions/5ea9a88e0e015a2fb8927b76",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"userAction",
+								"likes",
+								"questions",
+								"5ea9a88e0e015a2fb8927b76"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteLikesQuestion",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/userAction/likes/questions/5ea563b5a8fd8c14e46edafb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"userAction",
+								"likes",
+								"questions",
+								"5ea563b5a8fd8c14e46edafb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteLikesAnswers",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/userAction/likes/answers/5eaa83c59f6add2ec0779d80",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"userAction",
+								"likes",
+								"answers",
+								"5eaa83c59f6add2ec0779d80"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "likesAnswers",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/userAction/likes/answers/5eaa83c59f6add2ec0779d80",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"userAction",
+								"likes",
+								"answers",
+								"5eaa83c59f6add2ec0779d80"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postComments",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "content",
+									"value": "exampleContent",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/userAction/comments/5eaa83c59f6add2ec0779d80",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"userAction",
+								"comments",
+								"5eaa83c59f6add2ec0779d80"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modifyAnswers",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "change123",
+									"type": "text"
+								},
+								{
+									"key": "md",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/userAction/answers/5ea586bc8a0d230110b66107",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"userAction",
+								"answers",
+								"5ea586bc8a0d230110b66107"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteAnswers",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost/userAction/answers/5ea985b1a415fa4c0c4bff28",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"userAction",
+								"answers",
+								"5ea985b1a415fa4c0c4bff28"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/userAction/users/5ea1b118e0b50950a8000d5b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"userAction",
+								"users",
+								"5ea1b118e0b50950a8000d5b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/userAction/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"userAction",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modifyUsers",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "oldPwd",
+									"value": "745663",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "newPwd",
+									"value": "745663",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "avatar",
+									"value": "123",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/userAction/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"userAction",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteComments",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/userAction/comments/5eaa87a41ee43d3b042a65af",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"userAction",
+								"comments",
+								"5eaa87a41ee43d3b042a65af"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "getUsers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost/admin/users?page=1&count=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"admin",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "count",
+									"value": "10"
+								},
+								{
+									"key": "role",
+									"value": "admin",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postUsers",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test@test",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "teacher",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/admin/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modifyUsers",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "123@aadfasdfdxgfdsgfhytg1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "username",
+									"value": "高1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "admin",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "q",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/admin/users/5ea918dfbc35c10e601902ef",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"admin",
+								"users",
+								"5ea918dfbc35c10e601902ef"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUsers",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/admin/users/5ea6ec1ef8ce9663281616e6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"admin",
+								"users",
+								"5ea6ec1ef8ce9663281616e6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteDifficulties",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/admin/difficulties/5ea9a324f714ed56dcf2469a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"admin",
+								"difficulties",
+								"5ea9a324f714ed56dcf2469a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCategories",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/admin/categories/5ea9a30af714ed56dcf24689",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"admin",
+								"categories",
+								"5ea9a30af714ed56dcf24689"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteComments",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/admin/comments/5eaa83cc9f6add2ec0779d83",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"admin",
+								"comments",
+								"5eaa83cc9f6add2ec0779d83"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "teacher",
+			"item": [
+				{
+					"name": "postQuestions",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "testteteasfgdsafdawf",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "<h1>deleteTest</h1>",
+									"type": "text"
+								},
+								{
+									"key": "md",
+									"value": "# deleteTest",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "5ea9a2f3f714ed56dcf24680-5ea9a2f7f714ed56dcf24681",
+									"type": "text"
+								},
+								{
+									"key": "difficulty",
+									"value": "5ea9a322f714ed56dcf24692",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/teacher/questions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"teacher",
+								"questions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postCategories",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "123",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/teacher/categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"teacher",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postDifficulties",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "10",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/teacher/difficulties",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"teacher",
+								"difficulties"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modifyQuestions",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "change",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "md",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "Difficulty",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/teacher/questions/5ea55f944556ad138817703d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"teacher",
+								"questions",
+								"5ea55f944556ad138817703d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteQuestions",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost/teacher/questions/5ea989bef714ed56dcf24678",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"teacher",
+								"questions",
+								"5ea989bef714ed56dcf24678"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modifyDifficulties",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "change11111111111111",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/teacher/difficulties/5ea55522801d7846c081b79e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"teacher",
+								"difficulties",
+								"5ea55522801d7846c081b79e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modifyCategories",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "changed",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/teacher/categories/5ea5529266c2651918648936",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"teacher",
+								"categories",
+								"5ea5529266c2651918648936"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
