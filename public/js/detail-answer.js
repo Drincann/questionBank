@@ -461,6 +461,7 @@ function renderMd(res) {
         // autofocus: true,
         placeholder: 'Markdown supported!',
         autoDownloadFontAwesome: false,
+        spellChecker: false
 
     });
 
