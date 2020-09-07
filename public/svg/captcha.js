@@ -16,7 +16,7 @@ $.ajax({
         $('#captcha').html(res)
     }
 });
-$('#captcha').on('click', 'svg', function() {
+$('#captcha').on('click', 'svg', function () {
     $.ajax({
         type: 'get',
         url: '/public/captcha',
@@ -34,12 +34,12 @@ function serializeToJson(form) {
     var result = {};
     // 使用jq提供方法，serializeArray方法获取表单内容，返回一个数组，数组中存储元素为对象，该对象包含表单提交元素内容
     var f = form.serializeArray();
-    f.forEach(function(item) {
+    f.forEach(function (item) {
         result[item.name] = item.value;
     });
     return result;
 }
-$('#loginForm').on('submit', function() {
+$('#loginForm').on('submit', function () {
     var result = serializeToJson($(this))
     console.log(result);
 
@@ -79,7 +79,7 @@ $('#loginForm').on('submit', function() {
                 // alert(getUrlParams())
                 location.href = getUrlParams();
             } else {
-                location.href = '/html/index.html';
+                location.href = './index.html';
 
             }
         },
@@ -91,7 +91,7 @@ $('#loginForm').on('submit', function() {
     });
     return false;
 });
-$('#registerForm').on('submit', function() {
+$('#registerForm').on('submit', function () {
     var result = serializeToJson($(this))
     console.log(result);
     if (result.username.trim().length == 0) //用户没有输入
@@ -137,7 +137,7 @@ $('#registerForm').on('submit', function() {
         success: (res) => {
             // 
             console.log('注册成功');
-            location.href = '/html/login.html';
+            location.href = './login.html';
         },
         error: (xhr) => {
             $('.tips').html(JSON.parse(xhr.responseText).message);

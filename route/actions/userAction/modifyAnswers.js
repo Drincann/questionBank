@@ -23,9 +23,9 @@ module.exports = async (req, res) => {
             return res.status(400).send({ message: '未找到该题解！' });
         }
 
-        // 验证作者是否与当前用户相同
         const userId = req.session.userInfo._id;
-        if (userId != answer.author) {
+        const userRole = req.session.userInfo.role;
+        if (userId != question.author && userRole != 'admin') {
             return res.status(400).send({ message: '没有修改权限！' });
         }
 

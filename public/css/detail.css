@@ -10,13 +10,13 @@ body {
     margin: 0 auto;
 }
 
-@media screen and (min-width: 450px) {
+@media screen and (min-width: 550px) {
     .mini {
         display: none;
     }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 550px) {
     .navbar {
         display: none;
     }
@@ -33,7 +33,7 @@ body {
         width: 85%;
     }
     #avatarBox {
-        height: 120px !important;
+        height: 50% !important;
     }
 }
 
@@ -160,6 +160,10 @@ body {
 .article .container {
     padding: 30px 40px 20px;
     background: #FFF;
+}
+
+.article .container img {
+    max-width: 100%;
 }
 
 
@@ -306,8 +310,16 @@ body {
     color: #797979;
 }
 
-li {
+.list-group-item li {
     list-style: none;
+}
+
+.CodeMirror-scroll {
+    max-height: 300px;
+}
+
+.article-comment .comment {
+    resize: none;
 }
 
 a:hover {

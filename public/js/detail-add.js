@@ -4,7 +4,7 @@ function serializeToJson(form) {
     var result = {};
     // 使用jq提供方法，serializeArray方法获取表单内容，返回一个数组，数组中存储元素为对象，该对象包含表单提交元素内容
     var f = form.serializeArray();
-    f.forEach(function(item) {
+    f.forEach(function (item) {
         result[item.name] = item.value;
     });
     return result;
@@ -48,7 +48,7 @@ function renderMd(res) {
         // extraHeaders: {
         //     'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
         // },
-        onFileUploadResponse: function(xhr) {
+        onFileUploadResponse: function (xhr) {
             console.log(JSON.parse(xhr.responseText).img);
             imgArry.push(JSON.parse(xhr.responseText).img);
         }
@@ -67,7 +67,7 @@ function ajaxreload() {
 }
 ajaxreload();
 // 新建表单提交
-$('#formBox').on('submit', '#createform', function() {
+$('#formBox').on('submit', '#createform', function () {
     // var formData = $(this).serialize();
     var formData = serializeToJson($(this));
     console.log(formData);
@@ -98,10 +98,10 @@ $('#formBox').on('submit', '#createform', function() {
         success: (res) => {
             console.log(res);
             $('.info').css('background-color', '#d0e8a9').html('发布成功');
-            setTimeout(function() {
-                    ajaxreload();
-                }, 1000)
-                // location.href = '/html/admin-question-edit.html';
+            setTimeout(function () {
+                ajaxreload();
+            }, 1000)
+            // location.href = './admin-question-edit.html';
 
         },
         error: (xhr) => {
@@ -144,7 +144,7 @@ if (getUrlParams('answerId') !== -1) {
     });
 }
 // 修改表单提交
-$('#formBox').on('submit', '#modifyform', function() {
+$('#formBox').on('submit', '#modifyform', function () {
     // var formData = $(this).serialize();
     var formData = serializeToJson($(this));
     console.log(formData);
@@ -171,10 +171,10 @@ $('#formBox').on('submit', '#modifyform', function() {
         success: (res) => {
             console.log(res);
             $('.info').css('background-color', '#d0e8a9').html('发布成功');
-            setTimeout(function() {
-                    ajaxreload();
-                }, 1000)
-                // location.href = '/html/admin-question-edit.html';
+            setTimeout(function () {
+                ajaxreload();
+            }, 1000)
+            // location.href = './admin-question-edit.html';
 
         },
         error: (xhr) => {

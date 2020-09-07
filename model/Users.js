@@ -142,9 +142,10 @@ async function creatAdmin() {
         console.log('创建了 admin 账号');
         let salt = await bcrypt.genSalt(10);
         let pwd = await bcrypt.hash('745663', salt);
+
         try {
             await Users.create({
-                email: 'gaolihai',
+                email: '1019933576@qq.com',
                 username: '高厉害',
                 password: pwd,
                 role: 'admin'

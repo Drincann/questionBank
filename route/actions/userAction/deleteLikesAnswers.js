@@ -54,7 +54,7 @@ module.exports = async (req, res) => {
                 }
             }]).exec())[0].users; answer.save();
 
-        res.send({ message: '取消点赞成功！' });
+        res.send({ likes: answer.meta.likes });
     } catch (error) {
         res.status(500).send({ message: error.message })
     }

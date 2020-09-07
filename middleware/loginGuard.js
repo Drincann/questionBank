@@ -19,12 +19,17 @@ module.exports = async (req, res, next) => {
         // }
 
         // 验证通过，验证角色，为防止出现未定义的用户，这里判断复杂一些。
-        const role = req.session.userInfo.role;
-        if (role == 'student' || role == 'teacher' || role == 'admin') {
-            next();
+        if (req.session.userInfo) {
+            const role = req.session.userInfo.role;
+            if (role == 'student' || role == 'teacher' || role == 'admin') {
+                next();
+            } else {
+                return res.status(400).send({ message: '账号角色异常，请联系开发者或网站管理员！' });
+            }
         } else {
-            return res.status(400).send({ message: '账号角色异常，请联系开发者或网站管理员！' });
+            return res.status(400).send({ message: '请您登陆后进行该操作！' });
         }
+
     } catch (error) {
         return res.status(500).send({ message: error.message });
     }

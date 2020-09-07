@@ -54,7 +54,7 @@ module.exports = async (req, res) => {
 
 
 
-        res.send({ message: '点赞成功！' });
+        res.send({ likes: answer.meta.likes });
     } catch (error) {
         res.status(500).send({ message: error.message })
     }

@@ -10,6 +10,7 @@ router.get('/questions/:_id', require('./actions/public/getQuestionById'));
 router.get('/answers', require('./actions/public/getAnswers'));
 router.get('/answers/:_id', require('./actions/public/getAnswerById'));
 
+
 // 根据题解 id 获取题解评论 / 根据 id 获取题解评论
 router.get('/comments', require('./actions/public/getComments'));
 router.get('/comments/:_id', require('./actions/public/getCommentById'));
@@ -34,4 +35,6 @@ router.post('/login', require('./actions/public/login'));
 // 获取当前用户信息(jsonp)
 router.get('/usersJsonp', require('./actions/public/getUsersJsonp'));
 
+// 获取用户统计数据
+router.get('/usersStatistics/:_id', require('./actions/public/getUsersStatistics'));
 module.exports = router;

@@ -13,7 +13,7 @@
             padding: 0;
             margin: 0;
         }
-        
+
         div.center {
             position: absolute;
             top: 50%;
@@ -23,18 +23,18 @@
             min-height: 427px;
             padding: 0px;
         }
-        
+
         div.errmsg {
             text-align: left;
             width: 640px;
             line-height: 150%;
         }
-        
+
         a {
             text-decoration: none;
             color: red
         }
-        
+
         .center {
             display: none
         }
@@ -46,7 +46,8 @@
             type: 'defaultError'
         }
     </script>
-    <script type="text/javascript" src="https://s1.hdslb.com/bfs/static/jinkela/long/js/jquery/jquery1.7.2.min.js"></script>
+    <script type="text/javascript"
+        src="https://s1.hdslb.com/bfs/static/jinkela/long/js/jquery/jquery1.7.2.min.js"></script>
 </head>
 
 <body style="direction: ltr;">
@@ -55,7 +56,7 @@
         <div class="error-panel server-error">
             <img src="https://static.hdslb.com/error/very_sorry.png">
             <div style="text-align: center; padding: 0 0 40px 0;">
-                <a class="rollback-btn" style="padding: 0 20px; float: none;" href="/html/index.html">返回首页</a>
+                <a class="rollback-btn" style="padding: 0 20px; float: none;" href="./index.html">返回首页</a>
             </div>
         </div>
         <div class="error-split">
@@ -64,7 +65,7 @@
         </div>
     </div>
     <script>
-        $(document).ajaxStart(function(data) {
+        $(document).ajaxStart(function (data) {
             console.log(data)
             return false;
         });

@@ -9,7 +9,7 @@ $.ajax({
     success: (res) => {
         console.log(res);
         // alert('发布成功');
-        // location.href = '/html/admin-question-edit.html';
+        // location.href = './admin-question-edit.html';
         usermessage = res;
         var user = template('userEditTpl', res);
         $('#userEditBox').html(user);
@@ -32,7 +32,7 @@ function ajaxrender() {
         success: (res) => {
             console.log(res);
             // alert('发布成功');
-            // location.href = '/html/admin-question-edit.html';
+            // location.href = './admin-question-edit.html';
             usermessage = res;
             var user = template('userEditTpl', res);
             $('#userEditBox').html(user);
@@ -47,7 +47,7 @@ function ajaxrender() {
     });
 }
 // 头像上传
-$('#userEditBox').on('change', '#avatar', function() {
+$('#userEditBox').on('change', '#avatar', function () {
     var formData = new FormData();
     console.log(this.files[0]);
     var file = this.files[0];
@@ -88,14 +88,14 @@ function serializeToJson(form) {
     var result = {};
     // 使用jq提供方法，serializeArray方法获取表单内容，返回一个数组，数组中存储元素为对象，该对象包含表单提交元素内容
     var f = form.serializeArray();
-    f.forEach(function(item) {
+    f.forEach(function (item) {
         result[item.name] = item.value;
     });
     return result;
 }
 // 修改提交
 
-$('#userEditBox').on('submit', function() {
+$('#userEditBox').on('submit', function () {
     // console.log(1)
     var formData = serializeToJson($(this));
     console.log(formData);
@@ -139,11 +139,11 @@ $('#userEditBox').on('submit', function() {
             user.avatar = res.avatar;
             // $('#thumbnail').val(res[0].cover)
             $('.info1').css('background-color', '#d0e8a9').html('修改成功');
-            setTimeout(function() {
+            setTimeout(function () {
                 if (formData.email) {
 
 
-                    location.href = '/html/login.html';
+                    location.href = './login.html';
 
                 } else {
                     ajaxrender();
@@ -171,21 +171,10 @@ var views = 0;
 var likes = 0;
 $.ajax({
     type: 'get',
-    url: '/public/answersall',
-    data: {
-        userId: id
-    },
+    url: '/public/usersStatistics/' + id,
     success: (res) => {
         // $('#thumbnail').val(res[0].cover)
         // alert('修改成功');
-        console.log(res);
-        for (value in res.answers) {
-
-            views += res.answers[value].meta.views;
-            likes += res.answers[value].meta.likes;
-        }
-        res.views = views;
-        res.likes = likes;
         var html = template('countTpl', res);
         $('#countBox').html(html);
     },
@@ -201,7 +190,7 @@ $.ajax({
 });
 
 // 修改密码
-$('#passwordBox').on('submit', function() {
+$('#passwordBox').on('submit', function () {
     var formData = serializeToJson($(this));
     if (formData.newPwd.trim().length == 0) {
         // alert('请输入新密码');
@@ -225,7 +214,7 @@ $('#passwordBox').on('submit', function() {
         success: (res) => {
             // $('#thumbnail').val(res[0].cover)
             $('.info').css('background-color', '#d0e8a9').html('修改成功');
-            setTimeout(function() {
+            setTimeout(function () {
                 ajaxrender();
             }, 1000)
 
@@ -235,13 +224,13 @@ $('#passwordBox').on('submit', function() {
                 url: '/userAction/logout',
                 success: (res) => {
 
-                    location.href = '/html/login.html';
+                    location.href = './login.html';
                 },
                 error: (res) => {
                     // alert(JSON.parse(res.responseText).message);
                     $('.info').html(JSON.parse(xhr.responseText).message);
 
-                    location.href = '/html/login.html';
+                    location.href = './login.html';
                 }
             });
         },

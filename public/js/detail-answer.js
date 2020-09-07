@@ -1,26 +1,32 @@
 var questionId = getUrlParams('questionId');
 console.log(questionId);
-if (questionId == -1) {
-    // questionId = prompt('请输入题号');
-    questionId = '5eabeac7008e6d42a8740229';
+if (getUrlParams('aid') != -1) {
+    // alert('触发了')
+    $('.tijb').addClass('active').siblings().removeClass('active');
+    $('.tijm').addClass('now').siblings().removeClass('now');
+    answerIdreload(getUrlParams('aid'))
 }
+// if (questionId == -1) {
+//     questionId = prompt('请输入题号');
+//     // questionId = '5eabeac7008e6d42a8740229';
+// }
 // 获取表单内容
 function serializeToJson(form) {
     // 创建一个空对象存放转换的表单信息
     var result = {};
     // 使用jq提供方法，serializeArray方法获取表单内容，返回一个数组，数组中存储元素为对象，该对象包含表单提交元素内容
     var f = form.serializeArray();
-    f.forEach(function(item) {
+    f.forEach(function (item) {
         result[item.name] = item.value;
     });
     return result;
 }
 // 图标点击排他
-$('.pt').on('click', function() {
+$('.pt').on('click', function () {
     $('.pt').removeClass("now");
     $(this).addClass("now");
 });
-$('.ptn').on('click', function() {
+$('.ptn').on('click', function () {
     $('.pt').removeClass("now");
     $(this).addClass("active").siblings().removeClass("active");
 });
@@ -40,7 +46,7 @@ function questionreload() {
 
             if (res.question.author == null) {
                 res.question.author = {
-                    username: '无名',
+                    username: '已注销',
                     role: 'student'
                 }
 
@@ -48,100 +54,100 @@ function questionreload() {
 
             var html = template('questionTpl', res);
             $('#contentBox').html(html);
-            // location.href = '/html/admin-question-edit.html';
+            // location.href = './admin-question-edit.html';
         },
         error: (xhr) => {
-            alert(JSON.parse(xhr.responseText).message);
+            // alert(JSON.parse(xhr.responseText).message);
             console.log(xhr)
         }
     });
 }
 questionreload();
 // 点击点赞，对题目进行点赞
-$('#contentBox').on('click', '#questionlike', function() {
-        console.log(1);
-        $.ajax({
-            type: 'POST',
-            url: '/userAction/likes/questions/' + questionId,
-            success: (res) => {
-                console.log(res);
-                $(this).css('color', 'orange').removeClass('glyphicon glyphicon-heart-empty').addClass('glyphicon glyphicon glyphicon-heart');
-                // location.href = '/html/admin-question-edit.html';
-                questionreload();
-            },
-            error: (xhr) => {
-                // alert(JSON.parse(xhr.responseText).message);
-                // console.log(xhr)
-                if (JSON.parse(xhr.responseText).message == "请您登陆后进行该操作！") {
-                    // alert('???')
-                    var url = location.href;
-                    location.href = '/html/login.html?back=' + url;
-                }
-                $.ajax({
-                    type: 'DELETE',
-                    url: '/userAction/likes/questions/' + questionId,
-                    success: (res) => {
-                        console.log(res);
-                        $(this).css('color', '#64BF68').removeClass('glyphicon glyphicon glyphicon-heart').addClass('glyphicon glyphicon-heart-empty');
-                        questionreload();
-
-                        // location.href = '/html/admin-question-edit.html';
-                    },
-                    error: (xhr) => {
-                        // alert(JSON.parse(xhr.responseText).message);
-                        // console.log(xhr)
-                        if (JSON.parse(xhr.responseText).message == "请您登陆后进行该操作！") {
-                            // alert('???')
-                            var url = location.href;
-                            location.href = '/html/login.html?back=' + url;
-                        }
-
-                    }
-                });
+$('#contentBox').on('click', '#questionlike', function () {
+    console.log(1);
+    $.ajax({
+        type: 'POST',
+        url: '/userAction/likes/questions/' + questionId,
+        success: (res) => {
+            console.log(res);
+            $(this).css('color', 'orange').removeClass('glyphicon glyphicon-heart-empty').addClass('glyphicon glyphicon glyphicon-heart');
+            // location.href = './admin-question-edit.html';
+            $('#questionlikeCount').html(res.likes);
+        },
+        error: (xhr) => {
+            // alert(JSON.parse(xhr.responseText).message);
+            // console.log(xhr)
+            if (JSON.parse(xhr.responseText).message == "请您登陆后进行该操作！") {
+                // alert('???')
+                var url = location.href;
+                location.href = './login.html?back=' + url;
             }
-        });
-    })
-    // 点击题目
-$('#q').on('click', function() {
+            $.ajax({
+                type: 'DELETE',
+                url: '/userAction/likes/questions/' + questionId,
+                success: (res) => {
+                    console.log(res);
+                    $(this).css('color', '#64BF68').removeClass('glyphicon glyphicon glyphicon-heart').addClass('glyphicon glyphicon-heart-empty');
+                    $('#questionlikeCount').html(res.likes);
+
+                    // location.href = './admin-question-edit.html';
+                },
+                error: (xhr) => {
+                    // alert(JSON.parse(xhr.responseText).message);
+                    // console.log(xhr)
+                    if (JSON.parse(xhr.responseText).message == "请您登陆后进行该操作！") {
+                        // alert('???')
+                        var url = location.href;
+                        location.href = './login.html?back=' + url;
+                    }
+
+                }
+            });
+        }
+    });
+})
+// 点击题目
+$('#q').on('click', function () {
     console.log('q');
     console.log(this);
     questionreload();
 })
 
 // 点击题解
-$('#a').on('click', function() {
-        console.log('a');
-        $.ajax({
-            type: 'GET',
-            url: '/public/answers',
-            data: {
-                questionId,
-                page: 1,
-                count: 10,
-                sort: 0
-            },
-            success: (res) => {
-                console.log(res);
+$('#a').on('click', function () {
+    console.log('a');
+    $.ajax({
+        type: 'GET',
+        url: '/public/answers',
+        data: {
+            questionId,
+            page: 1,
+            count: 10,
+            sort: 0
+        },
+        success: (res) => {
+            console.log(res);
 
-                var html = template('answerlistTpl', res);
-                $('#contentBox').html(html);
+            var html = template('answerlistTpl', res);
+            $('#contentBox').html(html);
 
 
-            },
-            error: (xhr) => {
-                alert(JSON.parse(xhr.responseText).message);
-                console.log(xhr)
-            }
-        });
-    })
-    // 点击最优解
-$('#pa').on('click', function() {
-        console.log('pa');
-        // 获取评论
-        pareload();
-    })
-    // 点击发布题解
-$('#ada').on('click', function() {
+        },
+        error: (xhr) => {
+            alert(JSON.parse(xhr.responseText).message);
+            console.log(xhr)
+        }
+    });
+})
+// 点击最优解
+$('#pa').on('click', function () {
+    console.log('pa');
+    // 获取评论
+    pareload();
+})
+// 点击发布题解
+$('#ada').on('click', function () {
     console.log('ada');
     var html = template('addTpl');
     $('#contentBox').html(html);
@@ -152,41 +158,51 @@ $('#ada').on('click', function() {
 
 
 // 点击题目
-$('li #q').on('click', function() {
+$('li #q').on('click', function () {
     console.log('q');
     questionreload();
     console.log(this)
 })
 
 // 点击题解
-$('li #a').on('click', function() {
-        console.log('a');
-        $.ajax({
-            type: 'GET',
-            url: '/public/answers',
-            data: {
-                questionId,
-                page: 1,
-                count: 10,
-                sort: 0
-            },
-            success: (res) => {
-                console.log(res);
-
-                var html = template('answerlistTpl', res);
-                $('#contentBox').html(html);
-
-
-            },
-            error: (xhr) => {
-                alert(JSON.parse(xhr.responseText).message);
-                console.log(xhr)
-            }
-        });
-    })
-    // 选择题解渲染
-$('#contentBox').on('click', '#clickanswer', function() {
+$('li #a').on('click', function () {
     console.log('a');
+    $.ajax({
+        type: 'GET',
+        url: '/public/answers',
+        data: {
+            questionId,
+            page: 1,
+            count: 10,
+            sort: 0
+        },
+        success: (res) => {
+            console.log(res);
+            for (const author of res.answers) {
+                console.log(author)
+                if (author.author == null) {
+                    author.author = {
+                        username: '已注销',
+                        role: 'student'
+                    }
+
+                }
+            }
+            var html = template('answerlistTpl', res);
+            $('#contentBox').html(html);
+
+
+        },
+        error: (xhr) => {
+            alert(JSON.parse(xhr.responseText).message);
+            console.log(xhr)
+        }
+    });
+})
+// 选择题解渲染
+$('#contentBox').on('click', '#clickanswer', function () {
+    console.log('a');
+
     $.ajax({
         type: 'GET',
         url: '/public/answers/' + $(this).attr('data-id'),
@@ -223,10 +239,7 @@ $('#contentBox').on('click', '#clickanswer', function() {
         }
     });
 })
-if (getUrlParams('aid') != -1) {
 
-    answerIdreload(getUrlParams('aid'))
-}
 // 指定题解Id渲染
 function answerIdreload(Id) {
     $.ajax({
@@ -235,7 +248,8 @@ function answerIdreload(Id) {
         success: (res) => {
             console.log(res);
             var answer = res;
-
+            questionId = res.answer.question._id;
+            // alert(questionId)
             $.ajax({
                 type: 'GET',
                 url: '/public/comments',
@@ -279,7 +293,16 @@ function changePageoflist(page) {
         },
         success: (res) => {
             console.log(res);
+            for (const author of res.answers) {
+                console.log(author)
+                if (author.author == null) {
+                    author.author = {
+                        username: '已注销',
+                        role: 'student'
+                    }
 
+                }
+            }
             var html = template('answerlistTpl', res);
             $('#contentBox').html(html);
 
@@ -314,96 +337,91 @@ function pareload() {
         }
     });
 }
-$('li #pa').on('click', function() {
-        console.log('pa');
-        // 获取评论
-        pareload();
+$('li #pa').on('click', function () {
+    console.log('pa');
+    // 获取评论
+    pareload();
 
-    })
-    // 题解评论
-$('#contentBox').on('submit', '#commentform', function() {
-        $.ajax({
-            type: 'POST',
-            url: '/userAction/comments/' + $(this).attr('data-id'),
-            data: $(this).serialize(),
-            success: (res) => {
-                console.log(res);
-                answerIdreload($(this).attr('data-id'));
+})
+// 题解评论
+$('#contentBox').on('submit', '#commentform', function () {
+    $.ajax({
+        type: 'POST',
+        url: '/userAction/comments/' + $(this).attr('data-id'),
+        data: $(this).serialize(),
+        success: (res) => {
+            console.log(res);
+            answerIdreload($(this).attr('data-id'));
+        },
+        error: (xhr) => {
+            alert(JSON.parse(xhr.responseText).message);
+            console.log(xhr)
+        }
+    });
+    return false;
+})
+// 题解点赞
+$('#contentBox').on('click', '#answerlike', function () {
+    console.log(11);
+    $.ajax({
+        type: 'POST',
+        url: '/userAction/likes/answers/' + $(this).attr('data-id'),
+        success: (res) => {
+            console.log(res);
+            $(this).css('color', 'orange').removeClass('glyphicon glyphicon-heart-empty').addClass('glyphicon glyphicon glyphicon-heart');
+            // location.href = './admin-question-edit.html';
+            $('#answerlikeCount').html(res.likes);
 
-            },
-            error: (xhr) => {
-                alert(JSON.parse(xhr.responseText).message);
-                console.log(xhr)
+        },
+        error: (xhr) => {
+            // alert(JSON.parse(xhr.responseText).message);
+            // console.log(xhr)
+            if (JSON.parse(xhr.responseText).message == "请您登陆后进行该操作！") {
+                // alert('???')
+                var url = location.href;
+                location.href = './login.html?back=' + url;
             }
-        });
-        return false;
-    })
-    // 题解点赞
-$('#contentBox').on('click', '#answerlike', function() {
-        console.log(11);
-        $.ajax({
-            type: 'POST',
-            url: '/userAction/likes/answers/' + $(this).attr('data-id'),
-            success: (res) => {
-                console.log(res);
-                $(this).css('color', 'orange').removeClass('glyphicon glyphicon-heart-empty').addClass('glyphicon glyphicon glyphicon-heart');
-                // location.href = '/html/admin-question-edit.html';
-                answerIdreload($(this).attr('data-id'));
-
-            },
-            error: (xhr) => {
-                // alert(JSON.parse(xhr.responseText).message);
-                // console.log(xhr)
-                if (JSON.parse(xhr.responseText).message == "请您登陆后进行该操作！") {
-                    // alert('???')
-                    var url = location.href;
-                    location.href = '/html/login.html?back=' + url;
-                }
-                $.ajax({
-                    type: 'DELETE',
-                    url: '/userAction/likes/answers/' + $(this).attr('data-id'),
-                    success: (res) => {
-                        console.log(res);
-                        $(this).css('color', '#64BF68').removeClass('glyphicon glyphicon glyphicon-heart').addClass('glyphicon glyphicon-heart-empty');
-                        answerIdreload($(this).attr('data-id'));
+            $.ajax({
+                type: 'DELETE',
+                url: '/userAction/likes/answers/' + $(this).attr('data-id'),
+                success: (res) => {
+                    console.log(res);
+                    $(this).css('color', '#64BF68').removeClass('glyphicon glyphicon glyphicon-heart').addClass('glyphicon glyphicon-heart-empty');
+                    $('#answerlikeCount').html(res.likes);
 
 
-                        // location.href = '/html/admin-question-edit.html';
-                    },
-                    error: (xhr) => {
-                        // alert(JSON.parse(xhr.responseText).message);
-                        // console.log(xhr)
-                        if (JSON.parse(xhr.responseText).message == "请您登陆后进行该操作！") {
-                            // alert('???')
-                            var url = location.href;
-                            location.href = '/html/login.html?back=' + url;
-                        }
+                    // location.href = './admin-question-edit.html';
+                },
+                error: (xhr) => {
+                    // alert(JSON.parse(xhr.responseText).message);
+                    // console.log(xhr)
+                    if (JSON.parse(xhr.responseText).message == "请您登陆后进行该操作！") {
+                        // alert('???')
+                        var url = location.href;
+                        location.href = './login.html?back=' + url;
                     }
-                });
-            }
-        });
-    })
-    // 题解评论换页函数
-function changePage(page) {
+                }
+            });
+        }
+    });
+})
+// 题解评论换页函数
+function changePage(page, id) {
     console.log(page);
+    // alert(id)
     $.ajax({
         type: 'GET',
-        url: '/public/answers',
-        data: {
-            questionId,
-            page: 1,
-            count: 10,
-            sort: 1
-        },
+        url: '/public/answers/' + id,
+
         success: (res) => {
-            console.log(res.answers[0]);
-            var answer = res.answers[0];
+            console.log(res)
+            var answer = res;
 
             $.ajax({
                 type: 'GET',
                 url: '/public/comments',
                 data: {
-                    answerId: answer._id,
+                    answerId: answer.answer._id,
                     page,
                     count: 10
                 },
@@ -459,7 +477,7 @@ function renderMd(res) {
         // extraHeaders: {
         //     'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
         // },
-        onFileUploadResponse: function(xhr) {
+        onFileUploadResponse: function (xhr) {
             console.log(JSON.parse(xhr.responseText).img);
             imgArry.push(JSON.parse(xhr.responseText).img);
         }
@@ -472,7 +490,7 @@ function renderMd(res) {
 }
 
 // 点击发布题解
-$('li #ada').on('click', function() {
+$('li #ada').on('click', function () {
     console.log('ada');
     var html = template('addTpl');
     $('#contentBox').html(html);
@@ -481,7 +499,7 @@ $('li #ada').on('click', function() {
 });
 
 // 发布题解表单提交
-$('#contentBox').on('submit', '#createform', function() {
+$('#contentBox').on('submit', '#createform', function () {
     // var formData = $(this).serialize();
     var formData = serializeToJson($(this));
     console.log(formData);
@@ -510,10 +528,10 @@ $('#contentBox').on('submit', '#createform', function() {
             console.log(res);
             // alert('发布成功');
             $('.info').css('background-color', '#d0e8a9').html('发布成功');
-            setTimeout(function() {
-                    $('li #ada').click();
-                }, 1000)
-                // location.href = '/html/admin-question-edit.html';
+            setTimeout(function () {
+                $('li #ada').click();
+            }, 1000)
+            // location.href = './admin-question-edit.html';
 
         },
         error: (xhr) => {
@@ -522,7 +540,7 @@ $('#contentBox').on('submit', '#createform', function() {
             if (JSON.parse(xhr.responseText).message == "请您登陆后进行该操作！") {
                 // alert('???')
                 var url = location.href;
-                location.href = '/html/login.html?back=' + url;
+                location.href = './login.html?back=' + url;
             }
             console.log(xhr)
         }

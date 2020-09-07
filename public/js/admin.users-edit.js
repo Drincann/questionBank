@@ -14,7 +14,7 @@ $.ajax({
         $('#pageBox').html(page);
         var form = template('createFormTpl', res);
         $('#formBox').html(form);
-        // location.href = '/html/admin-question-edit.html';
+        // location.href = './admin-question-edit.html';
 
     },
     error: (xhr) => {
@@ -70,7 +70,7 @@ function changePage(page) {
     });
 }
 // 头像上传
-$('#formBox').on('change', '#avatar', function() {
+$('#formBox').on('change', '#avatar', function () {
     var formData = new FormData();
     console.log(this.files[0]);
     var file = this.files[0];
@@ -105,7 +105,7 @@ $('#formBox').on('change', '#avatar', function() {
     });
 });
 // 新建用户
-$('#formBox').on('submit', '#createForm ', function() {
+$('#formBox').on('submit', '#createForm ', function () {
     console.log(formData);
     if ($('#avatarH').val() == '') {
         $('#avatarH').val('/images/default.png');
@@ -132,7 +132,7 @@ $('#formBox').on('submit', '#createForm ', function() {
 });
 // 删除用户
 // 删除事件
-$('#usersBox').on('click', '#shanchu', function() {
+$('#usersBox').on('click', '#shanchu', function () {
     var id = $(this).attr('data-id');
     console.log(id);
     if (confirm('是否删除该用户？')) {
@@ -157,7 +157,7 @@ $('#usersBox').on('click', '#shanchu', function() {
 
 });
 // 修改用户信息
-$('#usersBox').on('click', '#xiugai', function() {
+$('#usersBox').on('click', '#xiugai', function () {
     var id = $(this).attr('data-id');
     $.ajax({
         type: 'GET',
@@ -176,7 +176,7 @@ $('#usersBox').on('click', '#xiugai', function() {
 
 });
 // 保存修改信息
-$('#formBox').on('submit', '#userEditForm', function() {
+$('#formBox').on('submit', '#userEditForm', function () {
     var formData = $(this).serialize();
     console.log(formData);
     var id = $(this).attr('data-id');

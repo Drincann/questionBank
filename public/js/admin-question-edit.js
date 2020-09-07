@@ -165,7 +165,7 @@ function renderMd(res) {
         // extraHeaders: {
         //     'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
         // },
-        onFileUploadResponse: function(xhr) {
+        onFileUploadResponse: function (xhr) {
             console.log(JSON.parse(xhr.responseText).img);
             imgArry.push(JSON.parse(xhr.responseText).img);
         }
@@ -184,47 +184,47 @@ var imgArry = [];
 
 
 // 修改题目
-$('#questionBox').on('click', '#xiugai', function() {
-        var id = $(this).attr('data-id');
-        xiugaiId = id;
-        console.log(id)
-        $.ajax({
-            type: 'GET',
-            url: '/public/questions/' + id,
+$('#questionBox').on('click', '#xiugai', function () {
+    var id = $(this).attr('data-id');
+    xiugaiId = id;
+    console.log(id)
+    $.ajax({
+        type: 'GET',
+        url: '/public/questions/' + id,
 
-            success: (res) => {
-                console.log(res);
-                // var questions = template('questionTpl', res);
-                // $('#questionBox').html(questions);
-                // var page = template('pageTpl', res);
-                // $('#pageBox').html(page)
-                res.nandu = nandu;
-                res.leixing = leixing;
-                imgArry = res.question.image;
-                var form = template('EditFormTpl', res);
-                $('#formBox').html(form);
-                // 渲染md
-                simplemde = renderMd(res);
-                // checked = true;
-            },
-            error: (xhr) => {
-                alert(JSON.parse(xhr.responseText).message);
-            }
-        });
-    })
-    // 获取表单内容
+        success: (res) => {
+            console.log(res);
+            // var questions = template('questionTpl', res);
+            // $('#questionBox').html(questions);
+            // var page = template('pageTpl', res);
+            // $('#pageBox').html(page)
+            res.nandu = nandu;
+            res.leixing = leixing;
+            imgArry = res.question.image;
+            var form = template('EditFormTpl', res);
+            $('#formBox').html(form);
+            // 渲染md
+            simplemde = renderMd(res);
+            // checked = true;
+        },
+        error: (xhr) => {
+            alert(JSON.parse(xhr.responseText).message);
+        }
+    });
+})
+// 获取表单内容
 function serializeToJson(form) {
     // 创建一个空对象存放转换的表单信息
     var result = {};
     // 使用jq提供方法，serializeArray方法获取表单内容，返回一个数组，数组中存储元素为对象，该对象包含表单提交元素内容
     var f = form.serializeArray();
-    f.forEach(function(item) {
+    f.forEach(function (item) {
         result[item.name] = item.value;
     });
     return result;
 }
 // 创建新题目
-$('#formBox').on('submit', '#questionForm', function() {
+$('#formBox').on('submit', '#questionForm', function () {
 
 
     var formData = serializeToJson($(this))
@@ -256,12 +256,12 @@ $('#formBox').on('submit', '#questionForm', function() {
         success: (res) => {
             console.log(res);
             $('.info').css('background-color', '#d0e8a9').html('发布成功');
-            setTimeout(function() {
+            setTimeout(function () {
                 ajaxreload();
 
             }, 1000)
 
-            // location.href = '/html/admin-question-edit.html';
+            // location.href = './admin-question-edit.html';
 
         },
         error: (xhr) => {
@@ -272,7 +272,7 @@ $('#formBox').on('submit', '#questionForm', function() {
     return false;
 });
 // 保存修改
-$('#formBox').on('submit', '#questionEditForm', function() {
+$('#formBox').on('submit', '#questionEditForm', function () {
     var id = $(this).find('#tijiao').attr('data-id');
 
     var formData = serializeToJson($(this))
@@ -305,12 +305,12 @@ $('#formBox').on('submit', '#questionEditForm', function() {
         success: (res) => {
             console.log(res);
             $('.info').css('background-color', '#d0e8a9').html('发布成功');
-            setTimeout(function() {
-                    ajaxreload();
+            setTimeout(function () {
+                ajaxreload();
 
-                }, 1000)
-                // ajaxreload();
-                // location.href = '/html/admin-question-edit.html';
+            }, 1000)
+            // ajaxreload();
+            // location.href = './admin-question-edit.html';
             checked = false;
             xiugaiId = '';
         },
@@ -322,7 +322,7 @@ $('#formBox').on('submit', '#questionEditForm', function() {
     return false;
 });
 // 删除事件
-$('#questionBox').on('click', '#shanchu', function() {
+$('#questionBox').on('click', '#shanchu', function () {
     var id = $(this).attr('data-id');
     console.log(id);
     if (confirm('是否删除该题目？')) {

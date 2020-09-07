@@ -5,13 +5,13 @@ body {
     background-color: #f5f5ff;
 }
 
-@media screen and (min-width: 450px) {
+@media screen and (min-width: 550px) {
     .mini {
         display: none;
     }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 550px) {
     .navbar {
         display: none;
     }
@@ -185,6 +185,10 @@ body {
 
 .list-group-item li {
     list-style: none;
+}
+
+.CodeMirror-scroll {
+    max-height: 300px;
 }
 
 a:hover {

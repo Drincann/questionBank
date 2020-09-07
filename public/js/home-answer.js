@@ -1,20 +1,20 @@
 var sort = 2;
 // 点击切换排序
 // 颜色排他
-$('.sort').on('click', function() {
-        $('.sort').removeClass("active");
-        $(this).addClass("active");
-    })
-    // 点击不同排行
-$('#sortviews').on('click', function() {
+$('.sort').on('click', function () {
+    $('.sort').removeClass("active");
+    $(this).addClass("active");
+})
+// 点击不同排行
+$('#sortviews').on('click', function () {
     sort = 2;
     reloadqestion();
 })
-$('#sortnandu').on('click', function() {
+$('#sortnandu').on('click', function () {
     sort = 1;
     reloadqestion();
 })
-$('#sortnew').on('click', function() {
+$('#sortnew').on('click', function () {
     sort = 0;
     reloadqestion();
 })
@@ -36,7 +36,16 @@ function reloadqestion() {
         success: (res) => {
 
             console.log(res);
+            for (const author of res.answers) {
+                console.log(author)
+                if (author.author == null) {
+                    author.author = {
+                        username: '已注销',
+                        role: 'student'
+                    }
 
+                }
+            }
             var list = template('questionlistTpl', res);
             $('#listBox').html(list);
             var page = template('pageTpl', res);
@@ -74,7 +83,7 @@ function changePageoflist(page, url) {
                 console.log(author)
                 if (author.author == null) {
                     author.author = {
-                        username: '无名',
+                        username: '已注销',
                         role: 'student'
                     }
 

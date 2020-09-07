@@ -1,20 +1,20 @@
 var sort = 2;
 // 点击切换排序
 // 颜色排他
-$('.sort').on('click', function() {
-        $('.sort').removeClass("active");
-        $(this).addClass("active");
-    })
-    // 点击不同排行
-$('#sortviews').on('click', function() {
+$('.sort').on('click', function () {
+    $('.sort').removeClass("active");
+    $(this).addClass("active");
+})
+// 点击不同排行
+$('#sortviews').on('click', function () {
     sort = 2;
     reloadqestion();
 })
-$('#sortnandu').on('click', function() {
+$('#sortnandu').on('click', function () {
     sort = 1;
     reloadqestion();
 })
-$('#sortnew').on('click', function() {
+$('#sortnew').on('click', function () {
     sort = 0;
     reloadqestion();
 })
@@ -40,7 +40,7 @@ function reloadqestion() {
                 console.log(author)
                 if (author.author == null) {
                     author.author = {
-                        username: '无名',
+                        username: '已注销',
                         role: 'student'
                     }
 
@@ -79,7 +79,16 @@ function changePageoflist(page, url) {
         },
         success: (res) => {
             console.log(res);
+            for (const author of res.questions) {
+                console.log(author)
+                if (author.author == null) {
+                    author.author = {
+                        username: '已注销',
+                        role: 'student'
+                    }
 
+                }
+            }
             var list = template('questionlistTpl', res);
             $('#listBox').html(list);
             var page = template('pageTpl', res);
@@ -115,36 +124,36 @@ $.ajax({
 // 当分类被选中
 var fenleilist = [];
 var fenleilistId = [];
-$('#fenleiBox').on('change', 'input', function() {
-        // console.log($('#fenleiBox').find('input:checked'));
+$('#fenleiBox').on('change', 'input', function () {
+    // console.log($('#fenleiBox').find('input:checked'));
 
-        // $('#fenleiBox').find('input:checked').each((index, dom) => {
-        //     console.log(index);
-        //     console.log(dom);
-        //     var value = $(dom).val();
-        //     fenleilist.push(value);
-        // })
-        console.log(fenleilist.indexOf($(this).val()))
-        if (fenleilist.indexOf($(this).val()) != -1) {
-            fenleilist.splice(fenleilist.indexOf($(this).val()), 1);
-            fenleilistId.splice(fenleilistId.indexOf($(this).attr('data-id')), 1);
+    // $('#fenleiBox').find('input:checked').each((index, dom) => {
+    //     console.log(index);
+    //     console.log(dom);
+    //     var value = $(dom).val();
+    //     fenleilist.push(value);
+    // })
+    console.log(fenleilist.indexOf($(this).val()))
+    if (fenleilist.indexOf($(this).val()) != -1) {
+        fenleilist.splice(fenleilist.indexOf($(this).val()), 1);
+        fenleilistId.splice(fenleilistId.indexOf($(this).attr('data-id')), 1);
 
-        } else {
-            fenleilist.push($(this).val());
-            fenleilistId.push($(this).attr('data-id'));
-        }
-
-
+    } else {
+        fenleilist.push($(this).val());
+        fenleilistId.push($(this).attr('data-id'));
+    }
 
 
 
-        console.log(fenleilist);
-        console.log(fenleilistId);
-        var list = template('fenleilistTpl', { data: fenleilist });
-        $('#fenleilistBox').html(list);
-        reloadqestion();
-    })
-    // 当点击了X号
+
+
+    console.log(fenleilist);
+    console.log(fenleilistId);
+    var list = template('fenleilistTpl', { data: fenleilist });
+    $('#fenleilistBox').html(list);
+    reloadqestion();
+})
+// 当点击了X号
 function outlist(val) {
     console.log(val);
     $('#fenleiBox').find('input:checked').each((index, dom) => {
@@ -175,7 +184,7 @@ $.ajax({
 });
 // 点击难度渲染
 var nanduId = [];
-$('#nanduBox').on('click', 'a', function() {
+$('#nanduBox').on('click', 'a', function () {
     console.log($(this).html());
     if ($(this).attr('data-id') == 000) {
         nanduId = [];
@@ -189,7 +198,7 @@ $('#nanduBox').on('click', 'a', function() {
 });
 // 当搜索框点击搜索
 var key = ' ';
-$('#searchform').on('submit', function() {
+$('#searchform').on('submit', function () {
     console.log('aa');
     console.log($('#searchinput').val())
     if ($('#searchinput').val().trim().length == 0) {
@@ -197,27 +206,27 @@ $('#searchform').on('submit', function() {
     }
     key = $('#searchinput').val();
     reloadqestion();
-    $('#searchinput').val('');
+    // $('#searchinput').val('');
     return false;
 });
 // 点击小屏幕排序
-$('#pt0').on('click', function() {
+$('#pt0').on('click', function () {
     $('#ptcontent').html($(this).html())
     sort = 0;
     reloadqestion();
 })
-$('#pt1').on('click', function() {
+$('#pt1').on('click', function () {
     $('#ptcontent').html($(this).html())
     sort = 1;
     reloadqestion();
 })
-$('#pt2').on('click', function() {
+$('#pt2').on('click', function () {
     $('#ptcontent').html($(this).html())
     sort = 2;
     reloadqestion();
 });
 // 点击小屏幕分类
-$('#minifenleiBox').on('click', 'li', function() {
+$('#minifenleiBox').on('click', 'li', function () {
     console.log(fenleilistId);
 
     console.log($(this).html());
@@ -237,7 +246,7 @@ $('#minifenleiBox').on('click', 'li', function() {
     reloadqestion();
 });
 // 点击小屏幕搜索
-$('#searchbtn').on('click', function() {
+$('#searchbtn').on('click', function () {
     if ($('#minisearchinput').val().trim().length == 0) {
         return false;
     }

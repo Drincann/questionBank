@@ -3,11 +3,11 @@
 <script src="/public/usersJsonp"></script>
 <script>
     if (!window.isLogin) {
-        location.href = '/html/login.html'
+        location.href = './login.html'
     }
     if (window.user.role == 'student') {
         alert('此页面拒绝学生访问');
-        location.href = '/html/index.html';
+        location.href = './index.html';
     }
     // console.log(window.isLogin);
     // console.log(window.user);
@@ -16,15 +16,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/detail-add.css">
-    <link rel="stylesheet" href="../bootsrap/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/index.css">
-    <script src="../jQuery/jQuery.min.js"></script>
-    <script src="../bootsrap/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../nprogress/nprogress.css">
-    <script src="../art-template/template-web.js"></script>
-    <script src="../nprogress/nprogress.js"></script>
-    <title>QuestionBamk</title>
+    <link rel="stylesheet" href="./css/detail-add.css">
+    <link rel="stylesheet" href="./bootsrap/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./jQuery/jQuery.min.js"></script>
+    <script src="./bootsrap/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./nprogress/nprogress.css">
+    <script src="./art-template/template-web.js"></script>
+    <script src="./nprogress/nprogress.js"></script>
+    <title>QuestionBank</title>
 </head>
 
 <body>
@@ -36,28 +36,31 @@
     <!-- 小屏幕 -->
     <nav class="mini">
         <div class="miniTop ">
-            <a href="/html/index.html" class="back"><span class="glyphicon glyphicon-chevron-left"></span>返回</a> QuestionBank
+            <a href="./index.html" class="back"><span class="glyphicon glyphicon-chevron-left"></span>返回</a>
+            QuestionBank
             <!-- <a href="#" class="back"></span>登录</a> QuestionBank -->
         </div>
         <div class="miniDown">
 
             <div class="btn-group">
                 <!-- 选中状态为.now -->
-                <button onclick="jump('/html/user-index.html')" class="btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                个人中心
-                
-              </button>
+                <button onclick="jump('./user-index.html')" class="btn" type="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="true">
+                    个人中心
+
+                </button>
             </div>
 
             <div class="btn-group">
-                <button class="btn btn-default dropdown-toggle " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                题目管理
-                <span class="caret"></span>
-              </button>
+                <button class="btn btn-default dropdown-toggle " type="button" id="dropdownMenu1" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="true">
+                    题目管理
+                    <span class="caret"></span>
+                </button>
                 <ul class="dropdown-menu mininav" aria-labelledby="dropdownMenu1">
 
-                    <li><a href="/html/admin-question-add.html">题目发布</a></li>
-                    <li><a href="/html/admin-label.html">分类管理</a></li>
+                    <li><a href="./admin-question-add.html">题目发布</a></li>
+                    <li><a href="./admin-label.html">分类管理</a></li>
                 </ul>
 
             </div>
@@ -83,9 +86,9 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <!-- 选中状态为.active -->
-                    <li><a href="/html/index.html">题库列表</a></li>
+                    <li><a href="./index.html">题库列表</a></li>
 
-                    <li><a href="/html/index-list.html">热门题解</a></li>
+                    <li><a href="./index-list.html">热门题解</a></li>
 
                 </ul>
 
@@ -93,26 +96,29 @@
                 <ul class="nav navbar-nav navbar-right">
 
                     <li class="dropdown admin">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">管理员<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">管理员<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/html/admin-question-add.html">题目发布</a></li>
-                            <li><a href="/html/admin-question-edit.html">题目管理</a></li>
-                            <li><a href="/html/admin-label.html">分类管理</a></li>
-                            <li><a href="/html/admin-users-edit.html">用户管理</a></li>
+                            <li><a href="./admin-question-add.html">题目发布</a></li>
+                            <li><a href="./admin-question-edit.html">题目管理</a></li>
+                            <li><a href="./admin-label.html">分类管理</a></li>
+                            <li><a href="./admin-users-edit.html">用户管理</a></li>
                         </ul>
                     </li>
                     <li class="dropdown teacher">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">教师<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">教师<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/html/admin-question-add.html">题目发布</a></li>
+                            <li><a href="./admin-question-add.html">题目发布</a></li>
 
-                            <li><a href="/html/admin-label.html">分类管理</a></li>
+                            <li><a href="./admin-label.html">分类管理</a></li>
 
 
                         </ul>
                     </li>
                     <li class="userlogin">
-                        <a style="color: #64BF68;" href="/html/login.html" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">登录</span></a>
+                        <a style="color: #64BF68;" href="./login.html" class="dropdown-toggle " data-toggle="dropdown"
+                            role="button" aria-haspopup="true" aria-expanded="false">登录</span></a>
 
                         <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">个人中心<span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -139,21 +145,23 @@
             <ul class="nav navbar-nav ">
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">个人中心<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                        aria-expanded="false">个人中心<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/html/user-index.html">个人信息</a></li>
-                        <li><a href="/html/user-list.html">我的题解</a></li>
-                        <li><a href="/html/detail-add.html">发布题解</a></li>
-                        <li><a href="/html/detail-add.html" onclick="jumpPost('/userAction/logout')">退出登录</a></li>
+                        <li><a href="./user-index.html">个人信息</a></li>
+                        <li><a href="./user-list.html">我的题解</a></li>
+                        <li><a href="./detail-add.html">发布题解</a></li>
+                        <li><a href="./detail-add.html" onclick="jumpPost('/userAction/logout')">退出登录</a></li>
 
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">网站管理<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                        aria-expanded="false">网站管理<span class="caret"></span></a>
                     <ul class="dropdown-menu" id="bignav">
-                        <li><a href="/html/admin-question-add.html">题目发布</a></li>
-                        <li><a href="/html/admin-label.html">分类管理</a></li>
-                        <li><a href="/html/admin-users-edit.html">用户管理</a></li>
+                        <li><a href="./admin-question-add.html">题目发布</a></li>
+                        <li><a href="./admin-label.html">分类管理</a></li>
+                        <li><a href="./admin-users-edit.html">用户管理</a></li>
                     </ul>
                 </li>
 
@@ -196,7 +204,7 @@
         </div>
     </div>
     <!-- fontAwesome -->
-    <link rel="stylesheet" href="../makedown/assets/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./makedown/assets/vendors/font-awesome/css/font-awesome.min.css">
 
     <!-- editor -->
     <link href="https://cdn.bootcss.com/simplemde/1.11.2/simplemde.min.css" rel="stylesheet">
@@ -207,11 +215,11 @@
     <link href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" rel="stylesheet">
 
     <!-- imgUpload -->
-    <script src="../makedown/assets/vendors/InlineAttachment-master/dist/inline-attachment.min.js"></script>
-    <script src="../makedown/assets/vendors/InlineAttachment-master/dist/codemirror-4.inline-attachment.min.js"></script>
+    <script src="./makedown/assets/vendors/InlineAttachment-master/dist/inline-attachment.min.js"></script>
+    <script src="./makedown/assets/vendors/InlineAttachment-master/dist/codemirror-4.inline-attachment.min.js"></script>
 
     <!-- createEditor -->
-    <script src="../makedown/assets/js/createEdtior.js"></script>
+    <script src="./makedown/assets/js/createEdtior.js"></script>
     <script>
         NProgress.done()
     </script>
@@ -265,7 +273,7 @@
 
             <h3>创建题目</h3>
             <!-- <div class="form-group" style="text-align: center; width: 100%;">
-        <img class=".img-responsive .center-block img-thumbnail" style="width: 80%;" src="../images/placeholder.png" alt="...">
+        <img class=".img-responsive .center-block img-thumbnail" style="width: 80%;" src="./images/placeholder.png" alt="...">
 
     </div> -->
             <div class="form-group">
@@ -366,8 +374,8 @@
     </script>
 
 
-    <script src="../js//admin-question-edit.js"></script>
-    <script src="../js/admin-head.js"></script>
+    <script src="./js//admin-question-edit.js"></script>
+    <script src="./js/admin-head.js"></script>
 </body>
 
 </html>
